@@ -18,6 +18,8 @@ export default (inputString) => {
         const prevItem = inputString[i-1];
         if (!prevItem || (isOperator(prevItem) && prevItem !== ')')) {
           result.push('un-');
+        } else {
+          result.push(item);
         }
       }
     }

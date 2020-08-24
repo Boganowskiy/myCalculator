@@ -14,5 +14,5 @@ test('calcFromRPN', () => {
   expect(calcFromRPN(rpn4)).toEqual(12);
   expect(calcFromRPN(rpn5)).toEqual('invalid expression');
   expect(calcFromRPN(rpn6)).toEqual(-1);
-  expect(calcFromRPN(rpn7)).toEqual(-19)
+  expect(calcFromRPN(rpn7)).toEqual(-19);
 });
