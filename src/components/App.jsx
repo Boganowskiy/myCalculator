@@ -1,7 +1,7 @@
 import React from 'react';
 import Keyboard from './Keyboard';
 import '../style/styles.css';
-import {isNumber, isClearingBtn} from '../functions/checkValueType';
+import { isNumber, isClearingBtn } from '../functions/checkValueType';
 import clearingButtons from '../functions/clearingButtons';
 
 export default class App extends React.Component {
