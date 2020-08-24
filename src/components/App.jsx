@@ -1,5 +1,6 @@
 import React from 'react';
 import Keyboard from './Keyboard';
+import '../style/styles.css';
 
 export default class App extends React.Component {
   constructor(props) {
