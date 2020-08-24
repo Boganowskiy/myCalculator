@@ -13,6 +13,7 @@ const calcFromRPN = (rpn) => {
       const b = operandsStack.pop();
       const a = operandsStack.pop();
       const result = operators[item].operation(a, b);
+      console.log(result)
       operandsStack.push(result);
     } else {
       operandsStack.push(item);

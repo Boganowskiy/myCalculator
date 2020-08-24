@@ -3,6 +3,7 @@ import Keyboard from './Keyboard';
 import '../style/styles.css';
 import { isNumber, isClearingBtn } from '../functions/checkValueType';
 import clearingButtons from '../functions/clearingButtons';
+import calcResultValue from '../functions/calcResultValue';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -38,9 +39,10 @@ export default class App extends React.Component {
 
   onEqualBtnClickHandle = (e) => {
     e.preventDefault();
-
+    const { displayValue } = this.state;
+    const result = calcResultValue(displayValue);
     this.setState({
-      displayValue: 'result',
+      displayValue: result,
       calculatorState: 'result',
     })
   }

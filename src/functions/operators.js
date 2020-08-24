@@ -1,25 +1,25 @@
 export default {
   '+': {
     priority: 13,
-    operation: (a, b) => a + b,
+    operation: (a, b) => Number((a + b).toFixed(15)),
     associativity: 'left',
     type: 'binary',
   },
   '-': {
     priority: 13,
-    operation: (a, b) => a - b,
+    operation: (a, b) => Number((a - b).toFixed(15)),
     associativity: 'left',
     type: 'binary',
   },
   '*': {
     priority: 14,
-    operation: (a, b) => a * b,
+    operation: (a, b) => Number((a * b).toFixed(15)),
     associativity: 'left',
     type: 'binary',
   },
   '/': {
     priority: 14,
-    operation: (a, b) => a / b,
+    operation: (a, b) => Number((a / b).toFixed(15)),
     associativity: 'left',
     type: 'binary',
   },
