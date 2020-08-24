@@ -1,18 +1,32 @@
 export default {
   '+': {
-    priority: 1,
+    priority: 13,
     operation: (a, b) => a + b,
+    associativity: 'left',
   },
   '-': {
-    priority: 1,
+    priority: 13,
     operation: (a, b) => a - b,
+    associativity: 'left',
   },
   '*': {
-    priority: 2,
+    priority: 14,
     operation: (a, b) => a * b,
+    associativity: 'left',
   },
   '/': {
-    priority: 2,
+    priority: 14,
     operation: (a, b) => a / b,
+    associativity: 'left',
   },
+  '(' : {
+    priority: 0,
+    operation: () => null,
+    associativity: 'not',
+  },
+  ')' : {
+    priority: 0,
+    operation: () => null,
+    associativity: 'not',
+  }
 };
