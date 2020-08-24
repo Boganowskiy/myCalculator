@@ -6,21 +6,21 @@ const buildRPN = (tokens) => {
   const polishNotationArray = tokens.reduce((rpn, token) => {
     if (isNumber(token)) {
       return [...rpn, token];
-    }
-    if (token === '(') {
-      operatorsStack.push(token);
-      return rpn;
-    }
-    if (token === ')') {
-      for (let i = operatorsStack.length - 1; i >= 0; i -= 1) {
-        if (operatorsStack[i] === '(') {
-          operatorsStack.pop();
-          return rpn;
-        }
-        rpn.push(operatorsStack.pop());
+    } else if (isOperator(token)) {
+      if (token === '(') {
+        operatorsStack.push(token);
+        return rpn;
       }
-      return rpn;
-    } else if (isOperator(token) && token.associativity !== null) {
+      if (token === ')') {
+        for (let i = operatorsStack.length - 1; i >= 0; i -= 1) {
+          if (operatorsStack[i] === '(') {
+            operatorsStack.pop();
+            return rpn;
+          }
+          rpn.push(operatorsStack.pop());
+        }
+        return rpn;
+      }
       const headOfStack = operatorsStack[operatorsStack.length - 1];
       if (!headOfStack) {
         operatorsStack.push(token);

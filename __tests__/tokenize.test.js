@@ -6,4 +6,5 @@ test('tokenization', () => {
   expect(tokenize('0+')).toEqual([0, '+']);
   expect(tokenize('1+2*3+(25/5)')).toEqual([1, '+', 2, '*', 3, '+', '(', 25, '/', 5, ')']);
   expect(tokenize('1.21+24.5')).toEqual([1.21, '+', 24.5]);
+  expect(tokenize('-1')).toEqual(['un-', 1]);
 })

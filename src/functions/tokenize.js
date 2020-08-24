@@ -12,7 +12,14 @@ export default (inputString) => {
         result.push(Number(currentNumber));
         currentNumber = '';
       }
-      result.push(item);
+      if (item !== '-') {
+        result.push(item);
+      } else if (item === '-') {
+        const prevItem = inputString[i-1];
+        if (!prevItem || (isOperator(prevItem) && prevItem !== ')')) {
+          result.push('un-');
+        }
+      }
     }
     if (i === inputString.length && currentNumber !== '') {
       result.push(Number(currentNumber));
