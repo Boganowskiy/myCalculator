@@ -15,4 +15,4 @@ export default {
     priority: 2,
     operation: (a, b) => a / b,
   },
-}
+};

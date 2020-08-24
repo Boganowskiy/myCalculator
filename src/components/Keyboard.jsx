@@ -1,7 +1,7 @@
 import React from 'react';
 
 const buttonsArr = [
-  '(', ')', 'BC', '-',
+  '(', ')', 'BS', '-',
   '7', '8', '9', '+',
   '4', '5', '6', '*',
   '1', '2', '3', '/',
@@ -9,12 +9,15 @@ const buttonsArr = [
 ];
 
 const Keyboard = (props) => {
-  const { onClickHandler } = props;
+  const { onClickHandle, onEqualBtnClickHandle} = props;
   return (
-    <div className="keyboard" onClick={onClickHandler}>
-      {buttonsArr.map((el) => {
-        return <button className="button" key={el} name={el}>{el}</button>
-      })}
+    <div className="keyboard" >
+        {buttonsArr.map((el) => {
+          if (el !== '=') {
+            return <button className="button" key={el} value={el} onClick={onClickHandle}>{el}</button>
+          }
+          return <button className="button equalBtn" key={el} value={el} onClick={onEqualBtnClickHandle}>{el}</button>
+        })}
     </div>
   );
 }
