@@ -1,17 +1,17 @@
-import { isNumber, isOperator } from './checkValueType';
+import * as check from './checkValueType';
 import operators from './operators';
 
 const buildRPN = (tokens) => {
   const operatorsStack = [];
   const polishNotationArray = tokens.reduce((rpn, token) => {
-    if (isNumber(token)) {
+    if (check.isNumber(token)) {
       return [...rpn, token];
-    } else if (isOperator(token)) {
-      if (token === '(') {
+    } else if (check.isOperator(token)) {
+      if (check.isOpenBracket(token)) {
         operatorsStack.push(token);
         return rpn;
       }
-      if (token === ')') {
+      if (check.isClosingBracket(token)) {
         for (let i = operatorsStack.length - 1; i >= 0; i -= 1) {
           if (operatorsStack[i] === '(') {
             operatorsStack.pop();
@@ -26,8 +26,8 @@ const buildRPN = (tokens) => {
         operatorsStack.push(token);
         return rpn;
       }
-      if ((operators[token].priority < operators[headOfStack].priority) ||
-        ((operators[headOfStack].associativity === 'left' && operators[token].priority === operators[headOfStack].priority))
+      if (check.isCurrentPriorityLess(token, headOfStack) ||
+        ((operators[headOfStack].associativity === 'left' && check.isEqualPriorities(token, headOfStack)))
       ) {
         operatorsStack.pop();
         operatorsStack.push(token);
