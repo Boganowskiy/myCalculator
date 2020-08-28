@@ -6,7 +6,8 @@ const buildRPN = (tokens) => {
   const polishNotationArray = tokens.reduce((rpn, token) => {
     if (check.isNumber(token)) {
       return [...rpn, token];
-    } else if (check.isOperator(token)) {
+    }
+    if (check.isOperator(token)) {
       if (check.isOpenBracket(token)) {
         operatorsStack.push(token);
         return rpn;
@@ -14,6 +15,9 @@ const buildRPN = (tokens) => {
       if (check.isClosingBracket(token)) {
         for (let i = operatorsStack.length - 1; i >= 0; i -= 1) {
           if (operatorsStack[i] === '(') {
+            if (i === 0) {
+              throw new Error('invalid expression');
+            }
             operatorsStack.pop();
             return rpn;
           }
@@ -26,16 +30,15 @@ const buildRPN = (tokens) => {
         operatorsStack.push(token);
         return rpn;
       }
-      if (check.isCurrentPriorityLess(token, headOfStack) ||
-        ((operators[headOfStack].associativity === 'left' && check.isEqualPriorities(token, headOfStack)))
+      if (check.isCurrentPriorityLess(token, headOfStack)
+        || ((operators[headOfStack].associativity === 'left' && check.isEqualPriorities(token, headOfStack)))
       ) {
         operatorsStack.pop();
         operatorsStack.push(token);
         return [...rpn, headOfStack];
-      } else {
-        operatorsStack.push(token);
-        return rpn;
       }
+      operatorsStack.push(token);
+      return rpn;
     }
     return rpn;
   }, []);

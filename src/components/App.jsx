@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       displayValue: '0',
       calculatorState: 'result',
-    }
+    };
   }
 
   onClickHandle = (e) => {
@@ -44,15 +44,18 @@ export default class App extends React.Component {
     this.setState({
       displayValue: result,
       calculatorState: 'result',
-    })
+    });
   }
 
   render() {
     const { displayValue } = this.state;
     return (
-      <div className='board'>
-        <input type='text' name='display' id='display' readOnly value={displayValue} />
-        <Keyboard onClickHandle={this.onClickHandle} onEqualBtnClickHandle={this.onEqualBtnClickHandle}/>
+      <div className="board">
+        <input type="text" name="display" id="display" readOnly value={displayValue} />
+        <Keyboard
+          onClickHandle={this.onClickHandle}
+          onEqualBtnClickHandle={this.onEqualBtnClickHandle}
+        />
       </div>
     );
   }
