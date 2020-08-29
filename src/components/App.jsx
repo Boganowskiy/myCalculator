@@ -40,21 +40,22 @@ export default class App extends React.Component {
   onEqualBtnClickHandle = (e) => {
     e.preventDefault();
     const { displayValue } = this.state;
-    const result = calcResultValue(displayValue);
+    const resultValue = calcResultValue(displayValue);
     this.setState({
-      displayValue: result,
+      displayValue: resultValue,
       calculatorState: 'result',
     });
   }
 
   render() {
-    const { displayValue } = this.state;
+    const { displayValue, calculatorState } = this.state;
     return (
       <div className="board">
         <input type="text" name="display" id="display" readOnly value={displayValue} />
         <Keyboard
           onClickHandle={this.onClickHandle}
           onEqualBtnClickHandle={this.onEqualBtnClickHandle}
+          calcState={calculatorState}
         />
       </div>
     );

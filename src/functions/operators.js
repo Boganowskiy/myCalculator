@@ -40,5 +40,5 @@ export default {
     operation: (_a, b) => 0 - b,
     associativity: 'right',
     type: 'unary',
-  }
+  },
 };

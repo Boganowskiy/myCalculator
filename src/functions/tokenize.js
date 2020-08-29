@@ -15,7 +15,7 @@ export default (inputString) => {
       if (item !== '-') {
         result.push(item);
       } else if (item === '-') {
-        const prevItem = inputString[i-1];
+        const prevItem = inputString[i - 1];
         if (!prevItem || (isOperator(prevItem) && prevItem !== ')')) {
           result.push('un-');
         } else {
@@ -28,4 +28,4 @@ export default (inputString) => {
     }
   }
   return result;
-}
+};

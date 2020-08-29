@@ -15,9 +15,6 @@ const buildRPN = (tokens) => {
       if (check.isClosingBracket(token)) {
         for (let i = operatorsStack.length - 1; i >= 0; i -= 1) {
           if (operatorsStack[i] === '(') {
-            if (i === 0) {
-              throw new Error('invalid expression');
-            }
             operatorsStack.pop();
             return rpn;
           }

@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const buttonsArr = [
   '(', ')', 'BS', '-',
@@ -9,35 +10,48 @@ const buttonsArr = [
 ];
 
 const Keyboard = (props) => {
-  const { onClickHandle, onEqualBtnClickHandle} = props;
+  const { onClickHandle, onEqualBtnClickHandle, calcState } = props;
   return (
     <div className="keyboard">
-        {buttonsArr.map((el) => {
-          if (el !== '=') {
-            return (
-              <button
-                className="button"
-                key={el}
-                value={el}
-                onTouchStart={onClickHandle}
-                onMouseDown={onClickHandle}
-                onTouchEnd={e => e.preventDefault()}
-              >{el}</button>
-            );
-          }
+      {buttonsArr.map((el) => {
+        if (el !== '=') {
           return (
             <button
-              className="button equalBtn"
+              type="button"
+              className="button"
               key={el}
               value={el}
-              onTouchStart={onEqualBtnClickHandle}
-              onMouseDown={onEqualBtnClickHandle}
-              onTouchEnd={e => e.preventDefault()}
-            >{el}</button>
+              onTouchStart={onClickHandle}
+              onMouseDown={onClickHandle}
+              onTouchEnd={(e) => e.preventDefault()}
+            >
+              {el}
+            </button>
           );
-        })}
+        }
+        return (
+          <button
+            type="button"
+            className="button equalBtn"
+            key={el}
+            value={el}
+            disabled={calcState === 'result'}
+            onTouchStart={onEqualBtnClickHandle}
+            onMouseDown={onEqualBtnClickHandle}
+            onTouchEnd={(e) => e.preventDefault()}
+          >
+            {el}
+          </button>
+        );
+      })}
     </div>
   );
-}
+};
+
+Keyboard.propTypes = {
+  onEqualBtnClickHandle: propTypes.func.isRequired,
+  onClickHandle: propTypes.func.isRequired,
+  calcState: propTypes.string.isRequired,
+};
 
 export default Keyboard;
