@@ -11,7 +11,7 @@ const calcFromRPN = (rpn) => {
   const res = rpn.reduce((operandsStack, item) => {
     if (isOperator(item)) {
       const b = operandsStack.pop();
-      const a = operandsStack.pop();
+      const a = (operators[item].type === 'binary') ? operandsStack.pop() : null;
       const result = operators[item].operation(a, b);
       if (Number.isNaN(result) || result === null) {
         throw new Error('invalid expression');

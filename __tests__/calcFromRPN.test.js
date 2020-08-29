@@ -7,6 +7,7 @@ const rpn4 = [12];
 const rpn5 = [];
 const rpn6 = [1, 'un-'];
 const rpn7 = [21, 'un-', 4, 2, '*', 6, '-', '+'];
+const rpn8 = [12, 4, 'un-', 5, '-', '+'];
 test('calcFromRPN', () => {
   expect(calcFromRPN(rpn1)).toEqual(15);
   expect(calcFromRPN(rpn2)).toEqual(-4);
@@ -14,6 +15,7 @@ test('calcFromRPN', () => {
   expect(calcFromRPN(rpn4)).toEqual(12);
   expect(calcFromRPN(rpn6)).toEqual(-1);
   expect(calcFromRPN(rpn7)).toEqual(-19);
+  expect(calcFromRPN(rpn8)).toEqual(3);
 });
 
 test('negative calcFromRPN', () => {

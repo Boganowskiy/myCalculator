@@ -36,7 +36,7 @@ export default {
     type: 'group',
   },
   'un-': {
-    priority: 0,
+    priority: 16,
     operation: (_a, b) => 0 - b,
     associativity: 'right',
     type: 'unary',

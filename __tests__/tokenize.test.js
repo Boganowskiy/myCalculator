@@ -8,6 +8,7 @@ test('tokenization', () => {
   expect(tokenize('1.21+24.5')).toEqual([1.21, '+', 24.5]);
   expect(tokenize('-1')).toEqual(['un-', 1]);
   expect(tokenize('-1-45')).toEqual(['un-', 1, '-', 45]);
+  expect(tokenize('12+(-4-5)')).toEqual([12, '+', '(', 'un-', 4, '-', 5, ')']);
 });
 
 test('negative tokenization', () => {

@@ -7,4 +7,5 @@ test('build', () => {
   expect(buildRPN(['(', 10, '-', 15, ')', '*', 3])).toEqual([10, 15, '-', 3, '*']);
   expect(buildRPN(['un-', 1])).toEqual([1, 'un-']);
   expect(buildRPN(['un-', 1, '-', 45])).toEqual([1, 'un-', 45, '-']);
+  expect(buildRPN([12, '+', '(', 'un-', 4, '-', 5, ')'])).toEqual([12, 4, 'un-', 5, '-', '+']);
 });
