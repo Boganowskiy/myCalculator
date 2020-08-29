@@ -39,7 +39,8 @@ const buildRPN = (tokens) => {
     }
     return rpn;
   }, []);
-  return [...polishNotationArray, ...operatorsStack.reverse()];
+  const resultRpn = [...polishNotationArray, ...operatorsStack.reverse()];
+  return resultRpn;
 };
 
 export default buildRPN;

@@ -16,4 +16,4 @@ test('resultCalc', () => {
   expect(calcResultValue(expr5)).toEqual(15);
   expect(calcResultValue(expr6)).toEqual(-125);
   expect(calcResultValue(expr7)).toEqual(33);
-})
+});

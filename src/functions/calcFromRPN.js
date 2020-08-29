@@ -6,13 +6,16 @@ const calcFromRPN = (rpn) => {
     if (isNumber(rpn[0])) {
       return rpn[0];
     }
-    return 'invalid expression';
+    throw new Error('Please, enter expression');
   }
   const res = rpn.reduce((operandsStack, item) => {
     if (isOperator(item)) {
       const b = operandsStack.pop();
       const a = operandsStack.pop();
       const result = operators[item].operation(a, b);
+      if (Number.isNaN(result) || result === null) {
+        throw new Error('invalid expression');
+      }
       operandsStack.push(result);
     } else {
       operandsStack.push(item);

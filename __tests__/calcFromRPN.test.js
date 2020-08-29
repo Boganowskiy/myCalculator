@@ -12,7 +12,11 @@ test('calcFromRPN', () => {
   expect(calcFromRPN(rpn2)).toEqual(-4);
   expect(calcFromRPN(rpn3)).toEqual(57);
   expect(calcFromRPN(rpn4)).toEqual(12);
-  expect(calcFromRPN(rpn5)).toEqual('invalid expression');
   expect(calcFromRPN(rpn6)).toEqual(-1);
   expect(calcFromRPN(rpn7)).toEqual(-19);
+});
+
+test('negative calcFromRPN', () => {
+  expect(() => calcFromRPN([...rpn2, '+'])).toThrow('invalid expression');
+  expect(() => calcFromRPN(rpn5)).toThrow('Please, enter expression');
 });

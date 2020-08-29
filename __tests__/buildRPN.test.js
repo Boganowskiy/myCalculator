@@ -6,8 +6,5 @@ test('build', () => {
   expect(buildRPN(['(', 21, '+', 2, ')', '*', 4, '+', 3])).toEqual([21, 2, '+', 4, '*', 3, '+']);
   expect(buildRPN(['(', 10, '-', 15, ')', '*', 3])).toEqual([10, 15, '-', 3, '*']);
   expect(buildRPN(['un-', 1])).toEqual([1, 'un-']);
-});
-
-test('negative build', () => {
-  expect(buildRPN([12, '+', '(', ')'])).toThrow('invalid expression, must be some elements beetwen brackets');
+  expect(buildRPN(['un-', 1, '-', 45])).toEqual([1, 'un-', 45, '-']);
 });
