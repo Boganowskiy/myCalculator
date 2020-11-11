@@ -18,7 +18,7 @@ input[type='text'] {
 
 .keyboard {
   flex: 1 1 40vh;
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   padding: 5px 0px;
 
